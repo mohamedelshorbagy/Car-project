@@ -1,0 +1,71 @@
+
+
+/* initialization Fonts */
+@font-face {
+    font-family:Raleway; 
+    src:url(../fonts/roboto/raleway.extralight.ttf);
+ 
+}
+
+/* End */
+
+/* Start navbar */ 
+
+
+
+
+nav {
+    background-color:rgb(127, 140, 141);    
+    
+}
+
+nav .nav-wrapper .container > a {
+    color:#FFF;
+
+} 
+
+nav .container ul li > a {
+    color:#111;
+
+}
+
+
+/* End Navbar */ 
+
+
+
+
+/* Start of Tabs */ 
+.collapsible .collapsible-header {
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/* End of Tabs */ 
+
+
+
+/* About Page */ 
+
+h1.text-center {
+    font-family: Raleway;
+    font-weight: bold;
+    letter-spacing: -2px;
+
+
+
+}
+h1.sub {
+    color:#555;
+
+}
+
+h1.dr {
+    color: #3498db;
+
+}
+
+
+/* End */
