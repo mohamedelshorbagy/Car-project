@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.collapsible').collapsible();
 
 
-     $('.carousel').carousel({
-        
-     });
+     $('.carousel').carousel();
+
+     $(".button-collapse").sideNav();
 });
