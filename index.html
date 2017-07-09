@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Car Project</title>
+    <link rel="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/materialize.min.css" />
-    <link rel="stylesheet" href="css/style.css?v0.1" />
+    <link rel="stylesheet" href="css/style.css?v0.2" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -18,11 +19,13 @@
         <div class="container">
             <a href="#" class="brand-logo">Ultra Sonic</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+           <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="about.html">About</a></li>
+                <li><a href="video.html">Videos</a></li>
             </ul>
-             <ul class="side-nav" id="mobile-demo">
+                <ul class="side-nav" id="mobile-demo">
                         <li><a href="about.html">About</a></li>
+                        <li><a href="video.html">Videos</a></li>  
                 </ul>
          </div>
      </div>
@@ -38,6 +41,7 @@
     <a class="carousel-item" href="#three!"><img src="images/LM35.jpg"></a>
     <a class="carousel-item" href="#four!"><img src="images/Flame Sensor.jpg"></a>
     <a class="carousel-item" href="#five!"><img src="images/UltraSonic Sensor.jpg"></a>
+    <a class="carousel-item" href="#six!"><img src="images/LDR.png"></a>
   </div>
 
 
@@ -52,26 +56,218 @@
     
         <ul class="collapsible popout" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header">Line Follower</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div class="collapsible-header">Ultra Sonic Sensor</div>
+                <div class="collapsible-body"><span>
+                    <hr>
+                <div class="well">
+                    lowspeed(140);<br>
+                    do {<br>
+                    // Clears the trigPin<br>
+                    digitalWrite(trigPin, LOW);<br>
+                    delayMicroseconds(2);<br>
+                    
+                    //Sets the trigPin on HIGH state for 10 micro seconds<br>
+                    digitalWrite(trigPin, HIGH);<br>
+                    delayMicroseconds(10);<br>
+                    digitalWrite(trigPin, LOW);<br>
+                    
+                    //Reads the echoPin, returns the sound wave travel time in microseconds<br>
+                    duration = pulseIn(echoPin, HIGH);<br>
+                    
+                    //calculating the distance<br>
+                    distance = duration * 0.034 / 2 ;<br>
+                    distance = abs(distance);<br>
+                    
+                    //Prints the distance on the serial Monitor<br>
+                    Serial.print("Distance: ");<br>
+                    Serial.println(distance);<br>
+                    
+                    if(distance < 70) {<br>
+                    Stop();<br>
+                    delay(1000);<br>
+                    highspeed();<br>
+                    backLeft();<br>
+                    delay(500);<br>
+                    forwardRight();<br>
+                    delay(500);<br>
+                    lowspeed(140);<br>
+                    } else if(distance > 70) {<br>
+                    lowspeed(140);<br>
+                        forward();<br>
+                    }<br>
+                    
+                    bluetooth=Serial.read();<br>
+                    }while(bluetooth != 'v');<br>
+                    Stop();<br>
+                    // End of Do While <br>
+                    highspeed(); <br>
+
+
+
+                            </div>
+                            
+                    <p class="lead">If you want to see the Vide Click <a href="video.html#ultraSonic">here</a></p>
+                            
+                            </span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Smoke Sensor</div>
+                        <div class="collapsible-body"><span>
+                            <hr>
+                            <div class="well">
+
+                                gas = digitalRead(gas_pin); <br>
+                                //Serial.println(gas); <br>
+
+                                if (gas == LOW) { <br>
+                                digitalWrite(gas_buzzer , HIGH); <br>
+                                
+                                } else if (gas == HIGH) { <br>
+                                
+                                    digitalWrite(gas_buzzer , LOW); <br>
+                                } <br>
+
+
+
+
+
+
+                    </div>
+
+                    
+                    <p class="lead">If you want to see the Vide Click <a href="video.html#gasSensor">here</a></p>
+                    
+                    
+                    
+                    
+                    </span></div>
             </li>
             <li>
-                <div class="collapsible-header">Smoke Sensor</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-                <div class="collapsible-header">Lm35</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div class="collapsible-header">LM35</div>
+                <div class="collapsible-body"><span>
+                    <hr>
+
+                    <div class="well">
+
+                        reading = analogRead(A0); <br>
+                        temp = (5.0 * reading * 100) / 1024; <br>      
+                        //Serial.println(temp); <br>
+                        if(temp > 38) { <br>
+                            
+                        analogWrite(temp_led,150); <br>
+                        } else if (temp < 38){ <br>
+                            // Do Nothing <br>
+                            analogWrite(temp_led ,0);<br>
+                            
+                        } 
+
+
+
+                    </div>
+                    
+                    <p class="lead">If you want to see the Vide Click <a href="video.html#LM35">here</a></p>
+
+
+                    
+                    
+                    </span></div>
             </li>
             
             <li>
                 <div class="collapsible-header">Flame Sensor</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div class="collapsible-body"><span>
+                    <hr>
+                    
+                    <div class="well">
+                        flame_pin = digitalRead(flame_sensor_pin); <br>
+                        if(flame_pin == LOW) { <br>
+                        digitalWrite(led_pin , HIGH); <br>
+                        } else { <br>
+                            Serial.println("NO Flame"); <br>
+                            digitalWrite(led_pin , LOW);  <br>  
+                        } <br>
+
+
+
+
+                    </div>
+
+
+                    
+                    <p class="lead">If you want to see the Vide Click <a href="video.html#flameSensor">here</a></p>
+
+
+                    
+                    
+                    </span></div>
             </li>
             
             <li>
-                <div class="collapsible-header">Ultra Sonic Sensor</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div class="collapsible-header">Line Follower Sensor</div>
+                <div class="collapsible-body"><span>
+                    
+                    <hr>
+                     <div class="well text-center">
+                        else if(bluetooth == 'W') {<br>
+ do {<br>
+  LineFollowerRight=digitalRead(LineFollowerRightPin);<br>
+  LineFollowerLeft=digitalRead(LineFollowerLeftPin);<br>
+   if(((LineFollowerLeft==1)&& (LineFollowerRight==1))&&(flag==0))//to find line at the begainning<br>
+   {lowspeed(180);<br>
+   forwardRight();}<br>
+   
+ else {flag=1;//mean that we find the line at the begainning<br>
+  if((LineFollowerLeft==0)&&(LineFollowerRight==0)){<br>
+   lowspeed(160);<br>
+   forward();<br>
+   }<br>
+  else if((LineFollowerLeft==1) && (LineFollowerRight==0) ){<br>
+    highspeed();<br>
+    forwardRight();<br> 
+  }<br>
+  else if((LineFollowerLeft==0) && (LineFollowerRight == 1)){<br>
+    highspeed();<br>
+    forwardLeft();<br>
+  }<br>
+  else if(((LineFollowerLeft==1)&& (LineFollowerRight==1))&&(flag==1)){<br>
+  lowspeed(160);<br>
+  back();<br>
+  }<br>
+  }<br>
+  bluetooth=Serial.read();}while(bluetooth != 'w'); // End of Do While to Get out from Line Following Feature<br>
+  
+  Stop();<br>
+  flag=0;<br>
+  }  // End of Else if 'W' <br>
+
+
+
+                    </div>
+                    <p class="lead">If you want to see the Vide Click <a href="video.html#lineFollower">here</a></p>
+                    
+                    </span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">LDR Sensor</div>
+                <div class="collapsible-body"><span>
+                    An LDR is a component that has a (variable) resistance that changes with the light intensity that falls upon it. This allows them to be used in light sensing circuits.
+                    <hr>
+                    <div class="well text-center">
+                        sensorValue = analogRead(A2); <br>
+                        voltage = sensorValue * (5.0 / 1023.0); <br>    
+
+                        if(voltage > 4.0) { <br>
+                        digitalWrite(led, HIGH); <br>
+                        } else { <br>
+                            digitalWrite(led, LOW); <br>
+                        }
+
+
+
+                    </div>
+
+
+                    </span></div>
             </li>
         </ul>
 
@@ -83,6 +279,8 @@
 <!-- End of Tabs -->
 
 
+
+<h2 class="feedBack">Send Us Your Feedback</h2>
 
 <!-- FeedBack Section --> 
 
